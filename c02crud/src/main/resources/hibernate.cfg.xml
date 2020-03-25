@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!--配置数据库 -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/db_hibernate?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=UTF-8</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+
+        <!-- 配置方言 -->
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+        <!-- 控制台显示SQL -->
+        <property name="show_sql">true</property>
+
+        <!-- 自动更新表结构：
+            1.如果实体类对应的表不存在则自动创建。
+            2.如果实体类结构改变，则自动更新表：
+                1.增加个属性，则表自动增加个字段
+                2.删除个属性，表不会自动删除字段
+                3.修改个属性，表不会自动修改字段
+        -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- 实体类与表映射 xml和注解2种方式 -->
+        <mapping resource="com/ims/model/c01xml/Student.hbm.xml"/>
+    </session-factory>
+
+</hibernate-configuration>

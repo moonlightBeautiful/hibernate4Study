@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ims.model.c01xml">
+
+    <class name="Car" table="c01_t_car">
+        <id name="id" column="carId">
+            <generator class="identity"></generator>
+        </id>
+        <property name="name" length="244"></property>
+        <property name="color"></property>
+    </class>
+
+</hibernate-mapping>
