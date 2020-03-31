@@ -5,7 +5,7 @@
 
 <hibernate-mapping package="com.ims.model.c01xml">
 
-    <class name="Student" table="c02_t_student">
+    <class name="com.ims.model.Student" table="c02_t_student">
         <id name="id" column="stuId">
             <generator class="native"></generator>
         </id>

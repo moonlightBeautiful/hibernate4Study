@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ims.model">
+
+    <class name="Book" table="c04_t_book">
+        <id name="id" column="bookId">
+            <generator class="native"></generator>
+        </id>
+
+        <property name="bookName" column="bookName" ></property>
+        <property name="pageNums" column="pageNums"></property>
+        <property name="price" column="price"></property>
+        <property name="specialPrice" column="specialPrice"></property>
+        <property name="publishDate" column="publishDate"></property>
+        <property name="author" column="author"></property>
+        <property name="introduction" column="introduction" type="text"></property>
+        <property name="bookPic" column="bookPic"></property>
+    </class>
+
+</hibernate-mapping>

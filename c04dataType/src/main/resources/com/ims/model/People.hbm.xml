@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ims.model">
+
+    <class name="People" table="c04_t_people">
+        <id name="id" column="id">
+            <generator class="native"></generator>
+        </id>
+
+        <property name="name" column="name"></property>
+
+        <set name="dogs" table="c04_t_dog">
+            <key column="dogId"></key>
+            <element column="name" type="string"></element>
+        </set>
+        <list name="cats" table="c04_t_cat">
+            <key column="id"></key>
+            <list-index column="catIndex"></list-index>
+            <element column="name" type="string"></element>
+        </list>
+        <idbag name="horses" table="c04_t_horse">
+            <!--collection-id要在key之前,主键-->
+            <collection-id type="long" column="horseId">
+                <generator class="increment"></generator>
+            </collection-id>
+            <key column="id"></key>
+            <!--外键-->
+            <element column="name" type="string"></element>
+        </idbag>
+        <map name="pigs" table="c04_t_pig">
+            <key column="id"></key>
+            <map-key column="key3" type="string"></map-key>
+            <element column="pigName" type="string"></element>
+        </map>
+    </class>
+
+</hibernate-mapping>

@@ -17,7 +17,7 @@
             2.持久化状态（persistent）：处于session缓存中，且在数据库中有对应的记录。
             3.删除状态（removed）：不处于session缓存中，且session计划将其从数据库中删除。
             4.游离状态（detached）：从session缓存中被移除，但在数据库中有对应的记录。
-        与状态相关的操作 
+        与对象相关的操作 
             1.load/get：从数据库中加载一个持久化对象。load延迟加载 get立即加载
                 类 实例 = session.load/get()
             2.delete：将一个持久化对象/游离对象从数据库中删除。变成删除状态。

@@ -1,4 +1,4 @@
-package com.ims.model.c01xml;
+package com.ims.model;
 
 public class Student {
 

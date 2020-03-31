@@ -1,6 +1,6 @@
 package com.ims;
 
-import com.ims.model.c01xml.Student;
+import com.ims.model.Student;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
