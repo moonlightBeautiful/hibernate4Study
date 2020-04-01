@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!--配置数据库 -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/db_hibernate?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=UTF-8</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+
+        <!-- 方言 -->
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+        <!-- 控制台显示SQL -->
+        <property name="show_sql">true</property>
+
+        <!-- 自动更新表结构：如果表不存在则创建，如果表结构改变，则自动改变，比如增加个属性，则会表自动增加个字段，但是删除个属性，表不会自动删除字段 -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- 注册模型类 -->
+        <!-- 单向多对一 -->
+        <mapping resource="com/ims/model/c01singleWayManyToOne/Student.hbm.xml"/>
+        <mapping resource="com/ims/model/c01singleWayManyToOne/School.hbm.xml"/>
+        <!-- 单向一对多 -->
+        <mapping resource="com/ims/model/c02singleWayOneToMany/Province.hbm.xml"/>
+        <mapping resource="com/ims/model/c02singleWayOneToMany/City.hbm.xml"/>
+        <!-- 双向一对多 -->
+        <mapping resource="com/ims/model/c03twoWayOneToMany/Company.hbm.xml"/>
+        <mapping resource="com/ims/model/c03twoWayOneToMany/Employee.hbm.xml"/>
+        <!-- 自身一对多 -->
+        <mapping resource="com/ims/model/c04selfOneToMany/Node.hbm.xml"/>
+    </session-factory>
+
+</hibernate-configuration>

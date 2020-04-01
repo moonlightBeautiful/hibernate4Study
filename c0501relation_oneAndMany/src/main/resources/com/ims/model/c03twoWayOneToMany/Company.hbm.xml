@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ims.model.c03twoWayOneToMany">
+
+    <class name="Company" table="c0503_t_company">
+        <id name="id" column="id">
+            <generator class="native"></generator>
+        </id>
+        <property name="name" column="name"></property>
+        <!--set 多对一配置
+                cascade：级联操作
+                inverse：是否交出维护主外键权利，默认false，默认自己可以维护主外键关系。
+            key 外键
+                column：外键名
+            one-to-many 一的一端
+                class:一的一端类的全限定名
+        -->
+        <set name="employees" cascade="all" >
+            <key column="companyId"></key>
+            <one-to-many class="com.ims.model.c03twoWayOneToMany.Employee"></one-to-many>
+        </set>
+    </class>
+
+</hibernate-mapping>

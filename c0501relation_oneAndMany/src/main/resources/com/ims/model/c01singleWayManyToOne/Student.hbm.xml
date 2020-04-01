@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ims.model.c01singleWayManyToOne">
+
+    <class name="Student" table="c0501_t_student">
+        <id name="id" column="id">
+            <generator class="native"></generator>
+        </id>
+
+        <property name="name" column="name"></property>
+
+        <!--many-to-one：多对一配置
+               name:属性名
+               column: 外键的名字
+               class: 一的一方类的全限定名
+               cascade：级联操作，是否级联操作另一端，默认none，无级联操作。save-update：级联保存和更新。
+          -->
+        <many-to-one name="school" column="schoolId" class="com.ims.model.c01singleWayManyToOne.School"
+                     cascade="none"></many-to-one>
+    </class>
+
+</hibernate-mapping>

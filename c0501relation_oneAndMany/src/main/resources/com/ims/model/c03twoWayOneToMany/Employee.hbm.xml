@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ims.model.c03twoWayOneToMany">
+
+    <class name="Employee" table="c0503_t_employee">
+        <id name="id" column="id">
+            <generator class="native"></generator>
+        </id>
+        <property name="name" column="name"></property>
+        <!--
+            many-to-one：双向一对多
+                class: 另一方类的全限定名
+                column：多方表的外键
+                cascade：级联操作
+        -->
+        <many-to-one name="company" column="companyId" class="com.ims.model.c03twoWayOneToMany.Company"
+                     cascade="all"></many-to-one>
+    </class>
+
+</hibernate-mapping>
