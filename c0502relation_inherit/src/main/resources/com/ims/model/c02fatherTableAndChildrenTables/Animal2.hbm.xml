@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ims.model.c02fatherTableAndChildrenTables">
+
+    <class name="Animal2" table="c050202_t_animal2">
+        <!-- 公共信息-->
+        <id name="id" column="id">
+            <generator class="native"></generator>
+        </id>
+        <property name="name" column="name"></property>
+        <!-- 子类信息-->
+        <!-- 子类的配置，需要配置外键-->
+        <joined-subclass name="com.ims.model.c02fatherTableAndChildrenTables.Cat2" table="c050202_t_ca2">
+            <key column="animalId"></key>
+            <property name="length" column="length"></property>
+        </joined-subclass>
+
+        <joined-subclass name="com.ims.model.c02fatherTableAndChildrenTables.Dog2" table="c050202_t_dog2">
+            <key column="animalId"></key>
+            <property name="weight" column="weight"></property>
+        </joined-subclass>
+    </class>
+
+</hibernate-mapping>

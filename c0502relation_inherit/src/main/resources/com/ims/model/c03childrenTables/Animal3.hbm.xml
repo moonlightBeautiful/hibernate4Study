@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ims.model.c03childrenTables">
+
+    <class name="Animal3" table="c050203_t_animal3" abstract="false">
+        <!--不能使用identity这种主键生成器策略，native会由hibernate根据数据库对自动生成标识符的支持能力，来选择identify，sequence或者 hilo。Mysql的话，native=identity。-->
+        <id name="id" column="id">
+            <generator class="increment"></generator>
+        </id>
+        <property name="name" column="name"></property>
+
+        <!-- 子类的配置，需要配置外键-->
+        <union-subclass name="com.ims.model.c03childrenTables.Cat3" table="c050203_t_cat3">
+            <property name="length" column="length"></property>
+        </union-subclass>
+        <union-subclass name="com.ims.model.c03childrenTables.Dog3" table="c050203_t_dog3">
+            <property name="weight" column="weight"></property>
+        </union-subclass>
+    </class>
+
+</hibernate-mapping>

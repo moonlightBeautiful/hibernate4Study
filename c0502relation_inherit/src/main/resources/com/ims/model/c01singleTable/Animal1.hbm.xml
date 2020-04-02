@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ims.model.c01singleTable">
+
+    <class name="Animal1" table="c050201_t_animal" discriminator-value="Anima">
+        <id name="id" column="id">
+            <generator class="native"></generator>
+        </id>
+        <!-- 鉴别器,必须放在主键后面其他字段前面，默认类型为varchar(255)-->
+        <!--discriminator-value 类标识-->
+        <discriminator column="classId"></discriminator>
+
+        <property name="name" column="name"></property>
+
+        <!-- 子类的配置，可以配置子类标识和子类的字段-->
+        <subclass name="com.ims.model.c01singleTable.Cat1" discriminator-value="Cat">
+            <property name="length" column="length"></property>
+        </subclass>
+        <subclass name="com.ims.model.c01singleTable.Dog1" discriminator-value="Dog">
+            <property name="weight" column="weight"></property>
+        </subclass>
+    </class>
+
+</hibernate-mapping>
