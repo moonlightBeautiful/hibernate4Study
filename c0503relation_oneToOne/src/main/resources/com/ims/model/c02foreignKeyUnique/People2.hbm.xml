@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ims.model.c02foreignKeyUnique">
+    <class name="People2" table="c050302_t_people2">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" />
+        <many-to-one name="passport2" class="com.ims.model.c02foreignKeyUnique.Passport2" column="passport2Id" cascade="all" unique="true"/>
+    </class>
+</hibernate-mapping>

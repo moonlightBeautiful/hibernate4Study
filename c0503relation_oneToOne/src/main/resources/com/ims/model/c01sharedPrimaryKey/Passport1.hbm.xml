@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ims.model.c01sharedPrimaryKey">
+    <class name="Passport1" table="c050301_t_passport1">
+        <!-- 重点在这里。主键生成策略为foreign，主键也作为外键，来自于主表的主键 -->
+        <id name="id" column="id">
+            <generator class="foreign">
+                <param name="property">people1</param>
+            </generator>
+        </id>
+        <!-- 一些常规属性 -->
+        <property name="name" column="name"/>
+        <!-- constrained属性：1.表明我们的主键当外键使用了，不需要写column属性。
+                              2.有级联作用，1.级联保存，先保存主表再保存从表。2.删除和保存的顺序作用。-->
+        <one-to-one name="people1" class="com.ims.model.c01sharedPrimaryKey.People1" constrained="true"/>
+    </class>
+</hibernate-mapping>

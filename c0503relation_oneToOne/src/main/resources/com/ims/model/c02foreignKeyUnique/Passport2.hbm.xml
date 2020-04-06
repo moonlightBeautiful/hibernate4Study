@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ims.model.c02foreignKeyUnique">
+    <class name="Passport2" table="c050302_t_passport2">
+        <!-- 重点在这里。主键生成策略为foreign，主键也作为外键，来自于主表的主键 -->
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+        <!-- property-ref指的是People2的 -->
+        <one-to-one name="people2" class="com.ims.model.c02foreignKeyUnique.People2" property-ref="passport2"/>
+    </class>
+</hibernate-mapping>
