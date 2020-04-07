@@ -2,24 +2,16 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>hibernate4Study</artifactId>
+        <groupId>com.ims</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ims</groupId>
-    <artifactId>hibernate4Study</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>c01hello</module>
-        <module>c02crud</module>
-        <module>c03object</module>
-        <module>c04dataType</module>
-        <module>c0501relation_oneAndMany</module>
-        <module>c0502relation_inherit</module>
-        <module>c0503relation_oneToOne</module>
-        <module>c0504relation_manyToMany</module>
-    </modules>
+    <artifactId>c0504relation_manyToMany</artifactId>
 
-    <name>hibernate4Study</name>
+    <name>c0504relation_manyToMany</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -33,20 +25,8 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.11</version>
             <scope>test</scope>
-        </dependency>
-        <!-- 添加Hibernate4依赖 -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>4.1.7.Final</version>
-        </dependency>
-        <!-- mysql驱动包 -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.18</version>
         </dependency>
     </dependencies>
 

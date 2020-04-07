@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ims.model.c02twoWayManyToMany">
+
+    <class name="Course2" table="c050402_t_course2">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name"/>
+        <set name="students" table="c050402_t_student_course" inverse="true">
+            <!-- key的column，表示当前类在中间表中的外键 -->
+            <key column="course_id"/>
+            <!-- many-to-many表示多对多关系, class表示另一方类的全限定名,column表示另一方在中间表中的外键 -->
+            <many-to-many class="com.ims.model.c02twoWayManyToMany.Student2" column="student_id"/>
+        </set>
+    </class>
+
+</hibernate-mapping>
