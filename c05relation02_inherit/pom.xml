@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>c0504relation_manyToMany</artifactId>
+    <artifactId>c05relation02_inherit</artifactId>
 
-    <name>c0504relation_manyToMany</name>
+    <name>c05relation02_inherit</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 

@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>c0503relation_oneToOne</artifactId>
+    <artifactId>c05relation03_oneToOne</artifactId>
 
-    <name>c0503relation_oneToOne</name>
+    <name>c05relation03_oneToOne</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
