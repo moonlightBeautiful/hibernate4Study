@@ -17,7 +17,7 @@
             one-to-many 一的一端
                 class:一的一端类的全限定名
         -->
-        <set name="employees" cascade="all" >
+        <set name="employees" cascade="all" inverse="true" >
             <key column="companyId"></key>
             <one-to-many class="com.ims.model.c03twoWayOneToMany.Employee"></one-to-many>
         </set>

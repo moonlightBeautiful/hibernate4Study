@@ -11,6 +11,10 @@
             proxy（默认值）：代理延迟检索。用到关联类的时候再加载关联类的全部数据。
             false：立即检索。立即加载关联类的全部数据。 
             no-proxy：无代理延迟检索，关联对象是null，用到的时候再查。需要编译时字节码增强，需要额外的工具。基本用不到   
+        注解：
+            @OneToMany(mappedBy="多端的关联属性名",fetch=FetchType.EAGER)
+            1、FetchType.LAZY：懒加载，加载一个实体时，定义懒加载的属性不会马上从数据库中加载。
+            2、FetchType.EAGER：急加载，加载一个实体时，定义急加载的属性会立即从数据库中加载。
    2、batch-size：指定一次查询多少个集合 
         配置set上，默认值1。
         hql或者sql查询一端的时候才有效。 例如hql = from Class

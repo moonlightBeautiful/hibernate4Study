@@ -18,6 +18,8 @@
             如果不设置级联保存，直接保存学生（学生设置临时学校对象）,则抛出异常，临时状态的学校是不能直接被级联保存的。
         建议：
             使用级联保存和更新可，不使用级联删除。
+        注解：
+             @Cascade(value = {CascadeType.SAVE_UPDATE})
     主外键关系维护inverse：
         是否交给对方控制维护双方的主外键关系。默认false，自己维护主外键关系。true，交给对方后自己就不能维护主外键了。
         举例子：
@@ -27,7 +29,13 @@
                 一端对象设置了另一端的关系，在表中不会出现主外键关系。因为主外键维护交给了另一端。
         建议：
             建议在多的一端维护主外键关系，因为多的一端操作比一的一端操作频繁。
-    
-
+        注解：
+            @OneToOne，@OneToMany，@ManyToMany上才有mappedBy属性，ManyToOne不存在该属性
+            @OneToMany(mappedBy="多端的关联属性名",fetch=FetchType.EAGER)
+            mappedBy 对方（多端）来维护主外键关系
+            1、FetchType.LAZY：懒加载，加载一个实体时，定义懒加载的属性不会马上从数据库中加载。
+            2、FetchType.EAGER：急加载，加载一个实体时，定义急加载的属性会立即从数据库中加载。
+    注解
+        多端的一端，外键名称：@JoinColumn(name = "paperId")
 
                            

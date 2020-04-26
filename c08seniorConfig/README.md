@@ -60,14 +60,15 @@
                     </dependency>
                 2.引入ehcache配置：在hibernate4的下载包 project/hibernate-ehcache/bin/hibernate-config中有示例
                 3.hibernate配置文件中配置二级缓存
-                    <!-- 开启二级缓存 ehcache -->
-                    <prop key="hibernate.cache.use_second_level_cache">true</prop>
-                    <!-- 开启查询的二级缓存，查询缓存依赖于二级缓存，是否缓存查询结果，以查询语句为key，查到的对象的id为value-->
-                    <prop key="hibernate.cache.use_query_cache">true</prop>
-                    <!-- Hibernate4.0以上设置factory -->
-                    <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
-                    <!-- 二级缓存 ehcache的配置文件位置，默认就是在resources/ehcache.xml -->
-                    <prop key="hibernate.cache.provider_configuration_file_resource_path">ehcache.xml</prop>
+                    <!-- 二级缓存配置 -->
+                    <!-- 启用二级缓存 -->
+                    <property name="cache.use_second_level_cache">true</property>
+                    <!-- 启用查询的二级缓存:是否缓存查询结果 -->
+                    <property name="cache.use_query_cache">true</property>
+                    <!-- 配置二级缓存的产品 EhCache -->
+                    <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+                    <!-- 二级缓存ehcache的配置文件位置，默认就是在resources/ehcache.xml -->
+                    <property name="hibernate.cache.provider_configuration_file_resource_path">ehcache.xml</property>
                 4.配置需二级缓存实体和属性
                     1.注解
                         在实体类和实体的那些集合属性get方法上启用二级缓存使用
