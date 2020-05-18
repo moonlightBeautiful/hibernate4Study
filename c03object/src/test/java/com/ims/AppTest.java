@@ -31,8 +31,9 @@ public class AppTest {
         session.close();
     }
 
+
     @Test
-    public void hello() {
+    public void initTables() {
         System.out.println("创建表成功");
     }
 
@@ -48,7 +49,7 @@ public class AppTest {
     }
 
     @Test
-    public void OidTest() {
+    public void objectOidTest() {
         session.beginTransaction(); // 开启事务
 
         User car1 = (User) session.get(User.class, Long.valueOf(2));
@@ -57,38 +58,45 @@ public class AppTest {
         System.out.println("主键相同，则指向session缓存中同一个缓存对象：" + (car1 == car2));
         System.out.println("主键不同，则指向session缓存中不同的缓存对象：" + (car1 == car3));
 
-        //session.getTransaction().commit();
+        session.getTransaction().commit();  // 提交事务
     }
 
     @Test
     public void transientTest() {
-        session.beginTransaction();
+        session.beginTransaction(); // 开启事务
 
         User user = new User(); //临时状态
 
-        session.getTransaction().commit();
+        session.getTransaction().commit();  // 提交事务
     }
 
     @Test
-    public void persistentTest() {
+    public void persistentTest() throws Exception {
         session.beginTransaction();
 
         /**
-         * 1.通过save方法把临时状态转化为持久化状态
-         * 2.通过get/load方法直接从数据库中加载持久化对象
-         * 3.通过update把游离对象变为持久化对象
+         * java对象与数据库对象建立联系
+         *      1.通过save方法把临时状态转化为持久化状态
+         *      2.通过get/load方法直接从数据库中加载持久化对象
+         *      3.通过update把游离对象变为持久化对象
          */
         //1.临时状态-》持久化状态
-        User user1 = new User("张三"); //临时状态
-        session.save(user1);    //持久化状态
+       /* User user1 = new User("张三"); //临时状态
+        session.save(user1);    //持久化状态*/
 
         //2.直接从数据库获取持久化状态
-        /* User user2 = (User)session.get(User.class, 2);   //持久化状态*/
+        /*User user2 = (User) session.get(User.class, 1L);   //持久化状态
+        System.out.println(user2);*/
 
         //3.更新游离状态为持久化状态
-       /* User user3 = (User)session.get(User.class, 2);   //持久化状态
+        User user3 = (User) session.get(User.class, 1L);   //持久化状态
+        session.getTransaction().commit();
         session.close();  //user3变成了游离对象
-        session.update(user3); //user3变成了持久化对象*/
+        setUp();
+        session.beginTransaction();
+        user3.setName("李四");
+        session.update(user3); //user3变成了持久化对象
+
 
         session.getTransaction().commit();
     }
@@ -97,10 +105,10 @@ public class AppTest {
     public void detachedTest() {
         session.beginTransaction();
 
-        User user2 = (User) session.get(User.class, 2);   //持久化状态
-        session.close();  //此时，c2变成了游离状态
+        User user2 = (User) session.get(User.class, 1L);   //持久化状态
 
         session.getTransaction().commit();
+        //session.close(); 之后，user2变成了游离状态
     }
 
     @Test
@@ -119,23 +127,25 @@ public class AppTest {
 
     @Test
     public void mergeTest() throws Exception {
-        /*
-            user1和user2具有相同的oid，但是user2在缓存中，user1不在缓存中
+        session.beginTransaction();
+
+        /**
+         *   user1和user2具有相同的oid，但是user2在缓存中，user1不在缓存中
          */
-        User user1 = (User) session.get(User.class, 2);
+        User user1 = (User) session.get(User.class, 1L);
+        session.getTransaction().commit();
         session.close();//user1处于游离状态
         setUp();
-        User user2 = (User) session.get(User.class, 2); //user2处于持久化状态
+        session.beginTransaction();
+        User user2 = (User) session.get(User.class, 1L); //user2处于持久化状态
 
-        /*
-        //可以更新user2，不可以更新user1
-        user1.setName("新名字1");
-        session.update(user1);
-        user2.setName("新名字2");
-        session.update(user2);
-         */
+        //可以更新user2，不可以更新user1，因为持久对象和游离对象是同一个对象，则以持久化对象为准
+        /*user1.setName("新名字1");
+        session.update(user1);*/
+       /* user2.setName("新名字2");
+        session.update(user2);*/
 
-        //建议把游离状态对象合并到持久化对象,然后更新持久化对象
+        //建议把游离状态对象属性合并到持久化对象中,然后更新持久化对象
         user1.setName("新名字1");
         user2.setName("新名字2");
         session.merge(user1);

@@ -7,10 +7,10 @@
 
     <class name="Car" table="c01_t_car">
         <id name="id" column="carId">
-            <generator class="identity"></generator>
+            <generator class="identity"/>
         </id>
-        <property name="name" length="244"></property>
-        <property name="color"></property>
+        <property name="name" length="244"/>
+        <property name="color"/>
     </class>
 
 </hibernate-mapping>

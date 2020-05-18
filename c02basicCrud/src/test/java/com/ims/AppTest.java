@@ -34,7 +34,7 @@ public class AppTest {
     }
 
     @Test
-    public void hello() {
+    public void initTables() {
         System.out.println("根据实体类映射文件创建表成功。");
     }
 
@@ -82,7 +82,7 @@ public class AppTest {
         for (Student user : users) {
             System.out.println(user);
         }
-        //session.getTransaction().commit(); // 查询不用提交事务
+        session.getTransaction().commit(); // 查询不用提交事务
     }
 
     @Test
@@ -92,6 +92,6 @@ public class AppTest {
         Student user = (Student) session.get(Student.class, Long.valueOf(2));
         System.out.println(user);
 
-        //session.getTransaction().commit(); // 查询不用提交事务
+        session.getTransaction().commit(); // 查询不用提交事务
     }
 }

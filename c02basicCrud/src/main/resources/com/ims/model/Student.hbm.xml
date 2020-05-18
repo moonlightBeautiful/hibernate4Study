@@ -3,14 +3,13 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="com.ims.model.c01xml">
+<hibernate-mapping package="com.ims.model">
 
-    <class name="com.ims.model.Student" table="c02_t_student">
+    <class name="Student" table="c02_t_student">
         <id name="id" column="stuId">
-            <generator class="native"></generator>
+            <generator class="native"/>
         </id>
-
-        <property name="name"></property>
+        <property name="name"/>
     </class>
 
 </hibernate-mapping>
