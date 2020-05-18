@@ -23,7 +23,7 @@
                     @GenericGenerator(name = "_native", strategy = "native")
                 自定义主键
                     @Id
-                    @Column(name = "id", unique = true, nullable = false, length = 40)
+                    @Column(name = "id", unique = true, nullable = false, length = 40,columnDefinition="text")
             其他属性上
                 可以什么都不写，则默认配置
                 @Transient：忽略该属性映射

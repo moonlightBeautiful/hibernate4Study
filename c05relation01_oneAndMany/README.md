@@ -14,7 +14,7 @@
     级联操作cascade：
         是否级联操作关联另一端。默认none，不会级联操作。
         举例子：   
-            比如保存学生的时候，是否级联保存学校。
+            比如学校还没有被保存过，保存学生的时候，是否级联保存学校。
             如果不设置级联保存，直接保存学生（学生设置临时学校对象）,则抛出异常，临时状态的学校是不能直接被级联保存的。
         建议：
             使用级联保存和更新可，不使用级联删除。
@@ -32,9 +32,9 @@
         注解：
             @OneToOne，@OneToMany，@ManyToMany上才有mappedBy属性，ManyToOne不存在该属性
             @OneToMany(mappedBy="多端的关联属性名",fetch=FetchType.EAGER)
-            mappedBy 对方（多端）来维护主外键关系
-            1、FetchType.LAZY：懒加载，加载一个实体时，定义懒加载的属性不会马上从数据库中加载。
-            2、FetchType.EAGER：急加载，加载一个实体时，定义急加载的属性会立即从数据库中加载。
+                mappedBy 对方（多端）来维护主外键关系
+                1、FetchType.LAZY：懒加载，加载一个实体时，定义懒加载的属性不会马上从数据库中加载。
+                2、FetchType.EAGER：急加载，加载一个实体时，定义急加载的属性会立即从数据库中加载。
     注解
         多端的一端，外键名称：@JoinColumn(name = "paperId")
 

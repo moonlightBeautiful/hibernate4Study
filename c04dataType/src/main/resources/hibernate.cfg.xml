@@ -23,7 +23,7 @@
         <property name="hbm2ddl.auto">update</property>
 
         <!-- 注册模型类 -->
-        <mapping resource="com/ims/model/Book.hbm.xml"/>
+        <mapping class="com.ims.model.Book"/>
         <mapping resource="com/ims/model/People.hbm.xml"/>
     </session-factory>
 

@@ -1,93 +1,102 @@
 package com.ims.model;
 
+import javafx.scene.image.PixelFormat;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.sql.Blob;
 import java.util.Date;
 
 /**
  * 基本数据类型映射
  */
+@Entity
+@Table(name = "c04_t_book")
 public class Book {
 
-    private int id;  //->int
-    private String bookName; // 图书名称 ->varchar（255）
-    private int pageNums; // 图书页数 ->int
-    private float price; // 图书价格  ->float
-    private boolean specialPrice; // 是否是特价   ->tinyint
-    private Date publishDate; // 发布日期   ->datetime
-    private String author; // 作者    ->varchar（255）
-    private String introduction; // 简介  ->varchar（255）
-    private Blob bookPic; // 图书图片   ->longblob
+    private int intTest;  //->int
+    private long longTest; //->bigint
+    private float floattest; // ->float
+    private double doubleTest;  // ->float
+    private String stringTeat; // ->varchar（255）
+    private boolean booleanTest; // ->tinyint
+    private Date dateTest; // ->datetime
+    private String stringToTextTest; //
+    private Blob blobTest; // ->longblob
 
-    public int getId() {
-        return id;
+    @Id
+    @GeneratedValue(generator = "_native")
+    @GenericGenerator(name = "_native", strategy = "native")
+    public int getIntTest() {
+        return intTest;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIntTest(int intTest) {
+        this.intTest = intTest;
     }
 
-    public String getBookName() {
-        return bookName;
+    public long getLongTest() {
+        return longTest;
     }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
+    public void setLongTest(long longTest) {
+        this.longTest = longTest;
     }
 
-    public float getPrice() {
-        return price;
+    public float getFloattest() {
+        return floattest;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setFloattest(float floattest) {
+        this.floattest = floattest;
     }
 
-    public boolean isSpecialPrice() {
-        return specialPrice;
+    public double getDoubleTest() {
+        return doubleTest;
     }
 
-    public void setSpecialPrice(boolean specialPrice) {
-        this.specialPrice = specialPrice;
+    public void setDoubleTest(double doubleTest) {
+        this.doubleTest = doubleTest;
     }
 
-    public Date getPublishDate() {
-        return publishDate;
+    public String getStringTeat() {
+        return stringTeat;
     }
 
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
+    public void setStringTeat(String stringTeat) {
+        this.stringTeat = stringTeat;
     }
 
-    public String getAuthor() {
-        return author;
+    public boolean isBooleanTest() {
+        return booleanTest;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setBooleanTest(boolean booleanTest) {
+        this.booleanTest = booleanTest;
     }
 
-    public String getIntroduction() {
-        return introduction;
+    public Date getDateTest() {
+        return dateTest;
     }
 
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
+    public void setDateTest(Date dateTest) {
+        this.dateTest = dateTest;
     }
 
-    public Blob getBookPic() {
-        return bookPic;
+    @Column(columnDefinition = "text")
+    public String getStringToTextTest() {
+        return stringToTextTest;
     }
 
-    public void setBookPic(Blob bookPic) {
-        this.bookPic = bookPic;
+    public void setStringToTextTest(String stringToTextTest) {
+        this.stringToTextTest = stringToTextTest;
     }
 
-    public int getPageNums() {
-        return pageNums;
+    public Blob getBlobTest() {
+        return blobTest;
     }
 
-    public void setPageNums(int pageNums) {
-        this.pageNums = pageNums;
+    public void setBlobTest(Blob blobTest) {
+        this.blobTest = blobTest;
     }
-
 }

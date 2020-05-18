@@ -7,14 +7,12 @@
 
     <class name="People" table="c04_t_people">
         <id name="id" column="id">
-            <generator class="native"></generator>
+            <generator class="native"/>
         </id>
-
-        <property name="name" column="name"></property>
-
+        <property name="name"/>
         <set name="dogs" table="c04_t_dog">
-            <key column="dogId"></key>
-            <element column="name" type="string"></element>
+            <key column="dogId"/>
+            <element column="name" type="string"/>
         </set>
         <list name="cats" table="c04_t_cat">
             <key column="id"></key>

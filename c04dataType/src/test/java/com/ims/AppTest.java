@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class AppTest {
+
     private Session session;
 
     @Before
@@ -40,30 +41,35 @@ public class AppTest {
     public void tearDown() throws Exception {
         session.close();
     }
+    @Test
+    public void initTables() throws IOException, ParseException {
+        session.beginTransaction(); // 开启事务
 
+        session.getTransaction().commit(); // 提交事务
+    }
     /**
      * 基本数据类型
      */
     @Test
-    public void hello() throws IOException, ParseException {
+    public void hello1() throws IOException, ParseException {
         session.beginTransaction(); // 开启事务
 
-        Book book = new Book();
+        /*Book book = new Book();
         book.setBookName("java编程思想");   //String
         book.setPrice(100);    //float
         book.setSpecialPrice(true);   //boolean   ->tinyint
         book.setPublishDate(new SimpleDateFormat("yyyy-MM-dd").parse("2013-1-1")); //date   ->datetime
         book.setAuthor("埃克尔");  //String
-        book.setIntroduction("简介...");   //String  ->text
+        book.setIntroduction("简介...");   //String  ->text*/
         /**
          * Blob
          */
-        LobHelper lobHelper = session.getLobHelper();
+     /*   LobHelper lobHelper = session.getLobHelper();
         InputStream in = new FileInputStream("java编程思想.jpg");
         Blob bookPic = lobHelper.createBlob(in, in.available());
         book.setBookPic(bookPic);
+        session.save(book);*/
 
-        session.save(book);
         session.getTransaction().commit(); // 提交事务
     }
 
@@ -126,15 +132,14 @@ public class AppTest {
         /**
          * Map测试
          */
-        Map<String,String> imageMap=new HashMap<String,String>();
+        Map<String, String> imageMap = new HashMap<String, String>();
         imageMap.put("i1", "image1.png");
         imageMap.put("i2", "image2.png");
         imageMap.put("i3", "image3.png");
         imageMap.put("i4", "image4.png");
-        People s4=new People();
+        People s4 = new People();
         s4.setPigs(imageMap);
         session.save(s4);
-
 
 
         session.getTransaction().commit(); // 提交事务
