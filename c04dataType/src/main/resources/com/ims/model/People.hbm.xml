@@ -10,6 +10,7 @@
             <generator class="native"/>
         </id>
         <property name="name"/>
+       <!--  -->
         <set name="dogs" table="c04_t_dog">
             <key column="dogId"/>
             <element column="name" type="string"/>
