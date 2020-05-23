@@ -16,7 +16,7 @@
         1.临时状态（transient）：new创建，还没进入session缓存中。
         2.持久化状态（persistent）：处于session缓存中，且在数据库中有对应的记录。
         3.删除状态（removed）：不处于session缓存中，且session计划将其从数据库中删除。
-        4.游离状态（detached）：从session缓存中被移除，但在数据库中有对应的记录。
+        4.游离状态（detached）：在session缓存中没有，但在数据库中有对应的记录。
     6种操作 
         1.load/get：从数据库中加载一个持久化对象。
             load延迟加载 get立即加载
@@ -30,7 +30,6 @@
         5.saveOrUpdate：将一个临时对象/游离对象/持久化对象变成持久化对象。
              session.saveOrUpdate(临时对象/游离对象/持久化对象)
         6.merge：存在游离对象和持久化对象是同一个记录的时候，
-            如果要对游离对象持久化操作，需要把游离对象合并到持久化对象，再更新持久化对象
-            session.merge(游离对象)
-            session.update(持久化对象)
+            如果要对游离对象持久化操作，需要把游离对象合并到持久化对象
+            session.merge(游离对象)  提交后，会更新到数据库
             

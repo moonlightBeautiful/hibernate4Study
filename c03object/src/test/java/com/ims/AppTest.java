@@ -129,27 +129,37 @@ public class AppTest {
     public void mergeTest() throws Exception {
         session.beginTransaction();
 
-        /**
-         *   user1和user2具有相同的oid，但是user2在缓存中，user1不在缓存中
+        /*
+            user1游离状态
          */
         User user1 = (User) session.get(User.class, 1L);
         session.getTransaction().commit();
-        session.close();//user1处于游离状态
+        session.close();
+        /*
+            user2持久化状态
+         */
         setUp();
         session.beginTransaction();
         User user2 = (User) session.get(User.class, 1L); //user2处于持久化状态
 
-        //可以更新user2，不可以更新user1，因为持久对象和游离对象是同一个对象，则以持久化对象为准
+        /*
+            可以更新user1
+            不可以更新user2，因为session中存在user1的oid和user2一样
+         */
         /*user1.setName("新名字1");
         session.update(user1);*/
        /* user2.setName("新名字2");
         session.update(user2);*/
 
+         /*
+            可以更新user1
+            不可以更新user2，因为session中存在user1的oid和user2一样
+            merge(游离对象user1)，则把session中存在相同oid持久化对象user2更新为user1
+         */
         //建议把游离状态对象属性合并到持久化对象中,然后更新持久化对象
-        user1.setName("新名字1");
+        user1.setName("新名字111");
         user2.setName("新名字2");
         session.merge(user1);
-        session.update(user2);
 
         session.getTransaction().commit(); // 提交事务
     }
